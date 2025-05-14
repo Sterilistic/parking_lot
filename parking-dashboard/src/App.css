@@ -1,0 +1,331 @@
+.App {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.App-header {
+  color: #333;
+}
+
+/* Check-in Form */
+.checkin-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Message */
+.message {
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 4px;
+  max-width: 400px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-box {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.stat-box.free {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.stat-box.occupied {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Parking Layout */
+.parking-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.parking-slot {
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.parking-slot.free {
+  border-color: #28a745;
+  background-color: #f8fff9;
+  box-shadow: 0 0 10px 2px #28a74533;
+}
+
+.parking-slot.occupied {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+  box-shadow: 0 0 10px 2px #dc354533;
+}
+
+.slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slot-number {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.distance {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.slot-details {
+  text-align: center;
+}
+
+.car-reg {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  background-color: rgba(0,0,0,0.1);
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.checkout-btn {
+  background-color: #dc3545;
+  font-size: 14px;
+  padding: 5px 15px;
+}
+
+.checkout-btn:hover {
+  background-color: #c82333;
+}
+
+.parking-map {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 40px auto;
+  max-width: 700px;
+  min-height: 400px;
+  background: #222;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  position: relative;
+  padding: 30px 0;
+}
+
+.lane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.left-lane {
+  margin-right: 20px;
+}
+
+.right-lane {
+  margin-left: 20px;
+}
+
+.road {
+  width: 120px;
+  background: #444;
+  border-radius: 10px;
+  margin: 0 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.road-markings {
+  width: 10px;
+  height: 90%;
+  border-left: 4px dashed #fff;
+  margin: 0 auto;
+}
+
+.loading-zone {
+  width: 120px;
+  min-height: 80px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffe082,
+    #ffe082 10px,
+    #fffde7 10px,
+    #fffde7 20px
+  );
+  color: #795548;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  border: 2px dashed #ffb300;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.subtitle {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  border: 2px solid #bbb;
+}
+
+.legend-box.free {
+  background: #eaffea;
+  border-color: #28a745;
+}
+
+.legend-box.occupied {
+  background: #ffeaea;
+  border-color: #dc3545;
+}
+
+.legend-box.loading {
+  background: repeating-linear-gradient(
+    135deg,
+    #ffe082,
+    #ffe082 10px,
+    #fffde7 10px,
+    #fffde7 20px
+  );
+  border-color: #ffb300;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  margin: 40px auto 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.parking-map {
+  flex: 2;
+  min-width: 400px;
+  max-width: 700px;
+  display: flex;
+}
+
+.side-panel {
+  flex: 1;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  margin: 40px auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  background: linear-gradient(135deg, #f8fafc 60%, #e3f0ff 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 24px 18px;
+  height: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .side-panel, .parking-map {
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+}
