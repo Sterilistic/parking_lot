@@ -2,6 +2,7 @@
 
 ## Project Overview
 A full-stack IoT solution for real-time parking lot management using Raspberry Pi, ultrasonic sensors, LEDs, and a modern React dashboard. The system detects car presence in each slot, updates a web dashboard, and allows attendants to check in/out vehicles.
+![Screenshot 2025-05-14 at 02 32 34](https://github.com/user-attachments/assets/c67cf8fa-081d-4d5c-8a8e-11fe119976a0)
 
 ---
 
