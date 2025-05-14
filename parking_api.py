@@ -7,7 +7,7 @@ from flask_cors import CORS
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React app
+CORS(app)  # Enabling CORS for React app
 
 # Distance threshold in cm to detect a car
 DIST_THRESHOLD = 10
@@ -48,13 +48,13 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# Initialize database
+# Initializing database
 init_db()
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-# Setup pins
+# Setting up pins
 for slot in SLOTS:
     GPIO.setup(slot["TRIG"], GPIO.OUT)
     GPIO.setup(slot["ECHO"], GPIO.IN)
@@ -104,14 +104,14 @@ def monitor_sensors():
             dist = measure_distance(slot["TRIG"], slot["ECHO"])
             occupied = dist <= DIST_THRESHOLD
             
-            # Update LEDs
+            # Updating LEDs
             GPIO.output(slot["GREEN_LED"], not occupied)
             GPIO.output(slot["RED_LED"], occupied)
             
-            # Get car registration if occupied
+            # Getting car registration if occupied
             car_reg = get_active_registration(slot["id"]) if occupied else None
             
-            # Update state
+            # Updating state
             parking_state[slot["id"]] = {
                 "occupied": occupied,
                 "distance": round(dist, 1),
@@ -152,11 +152,11 @@ def checkin():
     if slot_id not in parking_state:
         return jsonify({"error": "Invalid slot ID"}), 400
     
-    # Check if slot is actually free
+    # Checking if slot is actually free
     if parking_state[slot_id]["occupied"]:
         return jsonify({"error": "Slot is already occupied"}), 400
     
-    # Check if car is already checked in somewhere
+    # Checking if car is already checked in somewhere
     conn = get_db_connection()
     existing = conn.execute(
         'SELECT slot_id FROM parking_records WHERE car_registration = ? AND status = "active"',
@@ -167,7 +167,7 @@ def checkin():
         conn.close()
         return jsonify({"error": f"Car already checked in at slot {existing['slot_id']}"}), 400
     
-    # Create new parking record
+    # Creating new parking record
     conn.execute(
         'INSERT INTO parking_records (slot_id, car_registration, check_in_time, status) VALUES (?, ?, ?, "active")',
         (slot_id, car_registration, datetime.now().isoformat())
@@ -198,7 +198,7 @@ def checkout():
         conn.close()
         return jsonify({"error": "No active parking record found for this slot"}), 400
     
-    # Update record with checkout time
+    # Updating record with checkout time
     conn.execute(
         'UPDATE parking_records SET check_out_time = ?, status = "completed" WHERE id = ?',
         (datetime.now().isoformat(), record['id'])
@@ -219,7 +219,7 @@ def get_records():
     return jsonify([dict(record) for record in records])
 
 if __name__ == '__main__':
-    # Start sensor monitoring in background thread
+    # Starting sensor monitoring in background thread
     sensor_thread = threading.Thread(target=monitor_sensors, daemon=True)
     sensor_thread.start()
     

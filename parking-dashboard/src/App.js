@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const RASPBERRY_PI_URL = 'http://192.168.0.24:5000'; // Replace with your Pi's IP
+const RASPBERRY_PI_URL = 'http://192.168.0.24:5000'; // Pi's IP
 
 function ParkingSlot({ slotId, slot, onCheckout }) {
   if (!slot) return <div className="parking-slot empty"></div>;
