@@ -31,7 +31,7 @@ SLOTS = [
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-# Setup pins
+# Setting up pins
 for slot in SLOTS:
     GPIO.setup(slot["TRIG"], GPIO.OUT)
     GPIO.setup(slot["ECHO"], GPIO.IN)
@@ -49,14 +49,14 @@ def measure_distance(trig, echo):
     start_time = time.time()
     timeout = start_time + 0.04  # 40 ms timeout
 
-    # Wait for echo to go HIGH
+    # Waiting for echo to go HIGH
     while GPIO.input(echo) == 0 and time.time() < timeout:
         start = time.time()
 
     if time.time() >= timeout:
         return 999  # Timeout (no object detected)
 
-    # Wait for echo to go LOW
+    # Waiting for echo to go LOW
     timeout = time.time() + 0.04
     while GPIO.input(echo) == 1 and time.time() < timeout:
         end = time.time()
